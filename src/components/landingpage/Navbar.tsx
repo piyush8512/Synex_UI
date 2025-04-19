@@ -32,7 +32,12 @@ const Navbar = () => {
             <Link href="/components">Components</Link>
           </li>
           <li>
-            <Link href="/docs">Docs</Link>
+            <Link href="/template">
+              Templates
+              <span className="ml-2 rounded-md border border-emerald-400 bg-emerald-200 px-1.5 pb-0.5 text-xs leading-none text-emerald-700 no-underline group-hover:no-underline dark:bg-emerald-300/10 dark:text-emerald-500">
+                new
+              </span>
+            </Link>
           </li>
           <li>
             <Link href="/review">Feedback</Link>
@@ -83,7 +88,11 @@ const Navbar = () => {
           <Link href="/review" onClick={toggleMenu}>
             Feedback
           </Link>
-          <Link href="https://synextech.in" target="_blank" onClick={toggleMenu}>
+          <Link
+            href="https://synextech.in"
+            target="_blank"
+            onClick={toggleMenu}
+          >
             About Us
           </Link>
           <div className="flex gap-4 mt-2">

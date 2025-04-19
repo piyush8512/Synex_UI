@@ -1,9 +1,7 @@
 import { AppSidebar } from "@/components/app-sidebar";
+import Navbar from "@/components/landingpage/Navbar";
 
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 export default function DashboardLayout({
   children,
 }: {
@@ -11,12 +9,10 @@ export default function DashboardLayout({
 }) {
   return (
     <main>
-      {" "}
+      <Navbar />
       <SidebarProvider>
         <AppSidebar />
-        <SidebarInset>
-          {children}
-        </SidebarInset>
+        <SidebarInset>{children}</SidebarInset>
       </SidebarProvider>
     </main>
   );
