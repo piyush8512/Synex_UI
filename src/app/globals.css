@@ -120,3 +120,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+/* styles/globals.css or components/HeroSection.css */
+.title {
+  font-size: 30rem;
+  color: hsla(0,0%,100%,.08);
+  
+  -webkit-background-clip: text;
+  background-image: radial-gradient(closest-side, #ffffff 100%, transparent 0);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 400px 400px;
+  
+  transition: all .7s cubic-bezier(.19,1,.22,1);
+  
+}
+
+
+
+.title-wrapper {
+  margin: 10rem 3rem;
+}
+
+
+
+
