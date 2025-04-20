@@ -1,7 +1,8 @@
-import * as React from "react"
+"use client";
+import * as React from "react";
 
-import { SearchForm } from "@/components/search-form"
-import { VersionSwitcher } from "@/components/version-switcher"
+import { SearchForm } from "@/components/search-form";
+import { VersionSwitcher } from "@/components/version-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -13,7 +14,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   // SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 // This is sample data.
 const data = {
@@ -25,7 +28,7 @@ const data = {
       items: [
         {
           title: "Installation",
-          url: "#",
+          url: "/components/tabswitichingimage",
         },
         {
           title: "Project Structure",
@@ -44,7 +47,7 @@ const data = {
         {
           title: "Data Fetching",
           url: "#",
-          isActive: true,
+          isActive: false,
         },
         {
           title: "Rendering",
@@ -145,11 +148,13 @@ const data = {
       ],
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname();
+
   return (
-    <Sidebar {...props} className="relative border-none ml-10">
+    <Sidebar {...props} className="sticky border-none ml-10">
       <SidebarHeader className=" border-none bg-background">
         <VersionSwitcher
           versions={data.versions}
@@ -167,7 +172,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
+                      <a
+                        href={item.url}
+                        className={cn(
+                          "",
+                          {
+                            "bg-amber-300/20": pathname === item.url,
+                          }
+                        )}
+                      >
+                        {item.title}
+                      </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
@@ -178,5 +193,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       {/* <SidebarRail /> */}
     </Sidebar>
-  )
+  );
 }
